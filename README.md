@@ -231,11 +231,21 @@ reid_model = torchreid.models.build_model(
 
 ## Run Tracking Pipeline
 
-```python
+### Single-Camera Mode:
+```bash
 python mot_reid.py \
     --source input.mp4 \
     --weights yolov8n.pt \
     --output results.mp4
+```
+
+### Dual-Camera Mode (Cross-Camera Re-ID):
+```bash
+python mot_reid.py \
+    --source input_cam1.mp4 \
+    --source2 input_cam2.mp4 \
+    --weights yolov8n.pt \
+    --output results_combined.mp4
 ```
 
 ---
@@ -254,13 +264,17 @@ MOT-ReID/
 │   └── reid/
 │
 ├── notebooks/
-│   └── final_parking_osnet_bytetrack_yolo.ipynb
+│   ├── final_parking_osnet_bytetrack_yolo.ipynb
+│   └── stages/
+│       └── stage_01.py ... stage_36.py
 │
 ├── utils/
+│   ├── __init__.py
 │   ├── tracker.py
 │   ├── reid.py
 │   └── visualization.py
 │
+├── mot_reid.py
 ├── requirements.txt
 ├── README.md
 └── LICENSE
